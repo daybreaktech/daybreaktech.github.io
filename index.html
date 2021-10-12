@@ -47,7 +47,7 @@ div.content {
 				  <h3>XRP Trustline Lookup</h3>
 				  <hr/>
 					<div class="form-group">
-					  <label for="floatingInput">Issuer Address</label>	
+					  <label for="floatingInput">Issuer Address <a id="help" href="javascript:void();">(?)</a></label>	
 					  <input type="text" class="form-control" id="issuerAddress" placeholder="e.g) rw1rvdHuTE5gFmv6Sqy7rAYVmBQuXk3Ewh">
 					</div>
 					<div class="form-group">
@@ -74,9 +74,22 @@ div.content {
 			</div>			
 		</div>		
 	</div>
+	
+<!-- Modal -->
+<div class="modal fade" id="thisModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <img src="./img/issuerAddress.png"></img>
+    </div>
+  </div>
+</div>	
 </body>
 <script>
 		$(document).ready(function(){
+		
+			$("#help").click(function(){
+				$('#thisModal').modal('show')
+			});
 			
 			$("#search").click(function(){
 				var issuerAddress = $("#issuerAddress").val();
@@ -98,12 +111,18 @@ div.content {
 		});
 
 	    function findYourOrder(data, classicAddress) {
+			var yourOrder = "";
 			$.each(data, function(ind, obj){
 				if (obj.specification.counterparty == classicAddress) {
 					$("#yourOrder").val(ind + 1);
 					return false;
 				}
 			});
+			
+			if (yourOrder == "") {
+				$("#yourOrder").val("Your address not found!!")
+			}
+			
 			$("#numTrusts").val(data.length);
 		}
 	</script>
