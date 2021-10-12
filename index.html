@@ -77,11 +77,10 @@ div.content {
 </body>
 <script>
 		$(document).ready(function(){
-		
-			var issuerAddress = $("#issuerAddress").val();
-			var classicAddress = $("#classicAddress").val();
 			
 			$("#search").click(function(){
+				var issuerAddress = $("#issuerAddress").val();
+				var classicAddress = $("#classicAddress").val();
 				$.ajax({
 					type: "GET",
 					url: 'https://api.xrpscan.com/api/v1/account/' + issuerAddress + '/trustlines',
