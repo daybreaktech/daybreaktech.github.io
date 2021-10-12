@@ -4,9 +4,9 @@
 	<title>Trustline Lookup</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="./css/bootstrap.min.css">
+	<script src="./js/jquery.min.js"></script>
+	<script src="./js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="css/sheet.css">
 </head>
 <style>
@@ -83,21 +83,23 @@ div.content {
 		
 			var issuerAddress = $("#issuerAddress").val();
 			var classicAddress = $("#classicAddress").val();
-		
-			$.ajax({
-				type: "GET",
-				url: 'https://api.xrpscan.com/api/v1/account/' + issuerAddress + '/trustlines',
-				data:'YOUR_DATA_TO_SEND',
-				beforeSend: function() {
-					$("#search").text("Loading...");
-					$("#numTrusts").val("");
-					$("#yourOrder").val("");
-				},
-				success: function(data) {
-					$("#search").text("Search");
-					findYourOrder(data, classicAddress);
-				}
-			});		
+			
+			$("#search").click(function(){
+				$.ajax({
+					type: "GET",
+					url: 'https://api.xrpscan.com/api/v1/account/' + issuerAddress + '/trustlines',
+					data:'YOUR_DATA_TO_SEND',
+					beforeSend: function() {
+						$("#search").text("Loading...");
+						$("#numTrusts").val("");
+						$("#yourOrder").val("");
+					},
+					success: function(data) {
+						$("#search").text("Search");
+						findYourOrder(data, classicAddress);
+					}
+				});				
+			});	
 		});
 
 	    function findYourOrder(data, classicAddress) {
