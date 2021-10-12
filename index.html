@@ -114,13 +114,15 @@ div.content {
 			var yourOrder = "";
 			$.each(data, function(ind, obj){
 				if (obj.specification.counterparty == classicAddress) {
-					$("#yourOrder").val(ind + 1);
+					yourOrder = ind + 1;
 					return false;
 				}
 			});
 			
 			if (yourOrder == "") {
-				$("#yourOrder").val("Your address not found!!")
+				$("#yourOrder").val("Your address not found!!");
+			} else {
+				$("#yourOrder").val(yourOrder);
 			}
 			
 			$("#numTrusts").val(data.length);
