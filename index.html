@@ -18,8 +18,8 @@
 }
 
 .div-center {
-  width: 400px;
-  height: 300px;
+  width: 350px;
+  height: 250px;
   background-color: #fff;
   left: 0;
   right: 0;
@@ -35,9 +35,125 @@
 }
 
 div.content {
-  width: 400px;
-  height: 300px;
+  width: 350px;
+  height: 250px;
 }
+
+#tip {
+	margin-top: 10px;
+	height: 75px;
+	width: 100%;
+	border: 2px solid black;
+}
+
+
+.xumm-qr img {
+	padding: 3px;
+	display: block;
+	height: 250px;
+	width: 250px;	
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 15px;
+}
+
+.or {
+	margin-top: 10px;
+	margin-bottom: 10px;	
+}
+
+.twPc-div {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #e1e8ed;
+    border-radius: 6px;
+    height: 150px;
+    max-width: 275px; // orginal twitter width: 290px;
+}
+.twPc-bg {
+    background-image: url("https://pbs.twimg.com/profile_banners/1435869990754816000/1631538211/1500x500");
+    background-position: 0 50%;
+    background-size: 100% auto;
+    border-bottom: 1px solid #e1e8ed;
+    border-radius: 4px 4px 0 0;
+    height: 95px;
+    width: 100%;
+}
+.twPc-block {
+    display: block !important;
+}
+.twPc-button {
+    margin: -35px -10px 0;
+    text-align: right;
+    width: 100%;
+}
+.twPc-avatarLink {
+    background-color: #fff;
+    border-radius: 6px;
+    display: inline-block !important;
+    margin: -30px 5px 0 8px;
+    max-width: 100%;
+    padding: 1px;
+    vertical-align: bottom;
+}
+.twPc-avatarImg {
+    border: 2px solid #fff;
+    border-radius: 7px;
+    box-sizing: border-box;
+    color: #fff;
+    height: 72px;
+    width: 72px;
+}
+.twPc-divUser {
+    margin: 5px 0 0;
+}
+.twPc-divName {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 21px;
+}
+.twPc-divName a {
+    color: inherit !important;
+}
+.twPc-divStats {
+    margin-left: 11px;
+    padding: 10px 0;
+}
+.twPc-Arrange {
+    box-sizing: border-box;
+    display: table;
+    margin: 0;
+    min-width: 100%;
+    padding: 0;
+    table-layout: auto;
+}
+ul.twPc-Arrange {
+    list-style: outside none none;
+    margin: 0;
+    padding: 0;
+}
+.twPc-ArrangeSizeFit {
+    display: table-cell;
+    padding: 0;
+    vertical-align: top;
+}
+.twPc-ArrangeSizeFit a:hover {
+    text-decoration: none;
+}
+.twPc-StatValue {
+    display: block;
+    font-size: 18px;
+    font-weight: 500;
+    transition: color 0.15s ease-in-out 0s;
+}
+.twPc-StatLabel {
+    color: #8899a6;
+    font-size: 10px;
+    letter-spacing: 0.02em;
+    overflow: hidden;
+    text-transform: uppercase;
+    transition: color 0.15s ease-in-out 0s;
+}
+
 </style> 
 <body>
 	<div class="back">
@@ -54,7 +170,7 @@ div.content {
 					  <label for="floatingInput">Your Address</label>
 					  <input type="text" class="form-control" id="classicAddress" placeholder="e.g) rHm8VBgtAwKAWyueyhrDxDfwQ5k2M6Tz3W">
 					</div>
-					<button id="search" class="btn btn-primary" style="width: 100%;">Search</button>
+					<button id="search" class="btn btn-primary btn" style="width: 100%;">Search</button>
 					<hr />
 				</div>
 			</div>			
@@ -64,15 +180,16 @@ div.content {
 				<div class="content">
 				  <div class="form-group">
 					  <label for="exampleInputEmail1">Number of trustlines</label>
-					  <input type="text" class="form-control" id="numTrusts" disabled>
+					  <input type="text" class="form-control input-lg" id="numTrusts" disabled>
 					</div>
 					<div class="form-group">
 					  <label for="exampleInputPassword1">Your order</label>
-					  <input type="text" class="form-control" id="yourOrder" disabled>
+					  <input type="text" class="form-control input-lg" id="yourOrder" disabled>
 					</div>
+					<button id="tip" class="btn btn-success" style="width: 100%;">IF YOU FIND THIS USEFUL </br> CLICK HERE TO DONATE XRP</button>
 				</div>
 			</div>			
-		</div>		
+		</div>
 	</div>
 	
 <!-- Modal -->
@@ -83,6 +200,54 @@ div.content {
     </div>
   </div>
 </div>	
+<div class="modal fade" id="tipModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" style="padding: 10px;">
+	  <div class="row">
+		<h3 style="margin: auto; text-align: center; margin-top: 10px;">Scan QR code to show the XUMM</h3>
+	  </div>
+	  <div class="row">
+		<div class="xumm-qr">
+			<img src="https://gcdn.pbrd.co/images/N5nF2DMu9qSV.png?o=1"></img>
+		</div>
+	  </div>
+	  <div class="row or text-center">
+		OR
+	  </div>
+	  <div class="row text-center">
+		<button class="btn btn-primary btn-lg" style="margin: auto;" id="openTip" onclick="location.href='https://xumm.app/detect/request:rMfEg9Vy3VhPjZ3z7Sd44EpTaNzkPjCK5S'">Click here to Open Xumm App</button>
+	  </div>
+	  <div class="row clearfix" style="margin-top: 20px; padding: 10px; background-image: url(https://img.freepik.com/free-photo/technology-network-background_34629-304.jpg?size=626&ext=jpg)">
+		<div class="col-sm-3 col-md-3 col-lg-3"></div>
+		<div class="col-sm-5 col-md-5 col-lg-5">
+		
+			<div class="container">
+				<div class="row">
+					<div class="twPc-div">
+						<a class="twPc-bg twPc-block"></a>
+						<div>
+							<div class="twPc-button">
+								<a href="https://twitter.com/srspiewarmer" class="twitter-follow-button" data-show-count="false" data-size="large" data-show-screen-name="false" data-dnt="true">Follow @mertskaplan</a>
+								<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+								<!-- Twitter Button -->   
+							</div>
+
+							<a title="Srspiewarmer" href="https://twitter.com/srspiewarmer" class="twPc-avatarLink">
+								<img alt="srspiewar" src="https://pbs.twimg.com/profile_images/1437400236360540161/YWVwqrFj_400x400.jpg" class="twPc-avatarImg">
+							</a>
+							
+							<label>@srspiewarmer<label>
+						</div>
+					</div>
+				</div>
+			</div>	
+			
+		</div>
+		<div class="col-sm-3 col-md-3 col-lg-3"></div>
+	  </div>
+    </div>
+  </div>
+</div>	
 </body>
 <script>
 		$(document).ready(function(){
@@ -90,6 +255,10 @@ div.content {
 			$("#help").click(function(){
 				$('#thisModal').modal('show')
 			});
+			
+			$("#tip").click(function(){
+				$('#tipModal').modal('show')
+			});			
 			
 			$("#search").click(function(){
 				var issuerAddress = $("#issuerAddress").val();
